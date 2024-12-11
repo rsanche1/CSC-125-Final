@@ -474,4 +474,6 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration                   
+
+    //Test
 }
