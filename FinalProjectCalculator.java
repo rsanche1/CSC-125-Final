@@ -12,13 +12,15 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Ahmed
+ * @author Ahmed and Rodrigo
  */
 public class FinalProjectCalculatorTester extends javax.swing.JFrame {
-    private double firstNumber = 0; // To store the first number
-    private double secondNumber = 0; // To store the second number
+    private double a;// first number
+    private double b; // second number 
+    private boolean isFirstNumberSet = false; // Tracks if 'a' has been set
     private String operator = ""; // To store the operator
     private boolean isNewInput = true; // shows if the input is a new number
+    
    
     
     /**
@@ -62,6 +64,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
        
+       
 
         sqrtButton.setText("√");
         sqrtButton.addActionListener(new java.awt.event.ActionListener() 
@@ -69,7 +72,12 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) 
             {
                 jButton1ActionPerformed(evt);
-               
+                if (isNewInput) {
+                    a = Double.parseDouble(jTextField1.getText()); // Get the number for the square root
+                    operator = "sqrt"; // Set the operator for square root
+                    jTextField1.setText(""); // Clear the text field for the next input
+                    isNewInput = false; 
+                }
 
             }
         });
@@ -111,8 +119,13 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
              {
-               
-
+                if (isNewInput) {
+                    a = Double.parseDouble(jTextField1.getText()); // Store the first number
+                    operator = "^"; 
+                    jTextField1.setText(""); // Clear the text field for the second number
+                    isNewInput = false; 
+                }
+         
             }
         });
 
@@ -124,6 +137,12 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             {
                 
                 jButton6ActionPerformed(evt);
+                if (isNewInput) {
+                    a = Double.parseDouble(jTextField1.getText()); // Store the first number
+                    operator = "log"; // Set the operator for logarithm
+                    jTextField1.setText(""); // Clear the text field for the second number
+                    isNewInput = false; 
+                }
             }
         });
 
@@ -171,7 +190,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent ae)
             {
                 jTextField1.setText(jTextField1.getText() + "2");
-
+       
             }
         });
 
@@ -199,7 +218,12 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
          {
             public void actionPerformed(ActionEvent ae)
             {   
-                jTextField1.setText(jTextField1.getText() + "/");
+                if (isNewInput) {
+                    a = Double.parseDouble(jTextField1.getText()); // Store the first number
+                    operator = "/"; // Set the operator
+                    jTextField1.setText(""); // Clear the text field for the second number
+                    isNewInput = false; 
+                }
             }
         });
 
@@ -207,20 +231,12 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
         multiplyButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae)
             { 
-                jTextField1.setText(jTextField1.getText() + "*");
-                try 
-                {
-              
-                firstNumber = Double.parseDouble(jTextField1.getText());
-                secondNumber = Double.parseDouble(jTextField1.getText());
-                operator = "*";
-                isNewInput = true;
-                jTextField1.setText("");
+                if (isNewInput) {
+                    a = Double.parseDouble(jTextField1.getText()); // Store the first number
+                    operator = "*"; // Set the operator
+                    jTextField1.setText(""); // Clear the text field for the second number
+                    isNewInput = false; 
                 }
-               catch (NumberFormatException e)
-               {
-                jTextField1.setText("Error");
-               }
             }
             
         });
@@ -230,7 +246,12 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
          {
             public void actionPerformed(ActionEvent ae)
             {
-                jTextField1.setText(jTextField1.getText() + "-");
+                if (isNewInput) {
+                    a = Double.parseDouble(jTextField1.getText()); // Store the first number
+                    operator = "-"; // Set the operator
+                    jTextField1.setText(""); // Clear the text field for the second number
+                    isNewInput = false; 
+                }
 
             }
         });
@@ -240,7 +261,12 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
         {
             public void actionPerformed(ActionEvent ae)
             {
-                jTextField1.setText(jTextField1.getText() + "+");
+                if (isNewInput) {
+                    a = Double.parseDouble(jTextField1.getText()); // Store the first number
+                    operator = "+"; // Set the operator
+                    jTextField1.setText(""); // Clear the text field for the second number
+                    isNewInput = false;
+                }
 
             }
         });
@@ -251,8 +277,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent ae)
             {
                jTextField1.setText("");
-                firstNumber = 0;
-                secondNumber = 0;
+               
                 operator = "";
                 isNewInput = true;
 
@@ -264,9 +289,42 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
         {
             public void actionPerformed(ActionEvent ae)
             {
-            
-               
-            
+                if (!isNewInput) {
+                    b = Double.parseDouble(jTextField1.getText()); // Get the second number
+                    double result = 0;
+        
+                    // Perform calculation based on the operator
+                    if (operator.equals("*"))
+                     {
+                        result = Operations.multiply(a, b);
+                    } else if (operator.equals("+")) {
+
+                        result = Operations.add(a, b);
+
+                    } else if (operator.equals("-")) 
+                    {
+                        result = Operations.subtract(a, b);
+
+                    } else if (operator.equals("/"))
+                     {
+                        result = Operations.divide(a, b);
+
+                    } else if (operator.equals("^")) 
+                    {
+                        result = Operations.power(a, b);
+
+                    } else if (operator.equals("log"))
+                     {
+                        result = Operations.log(a); // Log is handled with rounding
+                        
+                    } else if (operator.equals("sqrt")) {
+                        result = Operations.squareRoot(a); // Square root operation
+                    }
+        
+                    // Show the result
+                    jTextField1.setText(String.valueOf(result));
+                    isNewInput = true; // Set it back for the next calculation
+                }
             }
         });
 
@@ -475,3 +533,5 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration                   
 }
+
+
