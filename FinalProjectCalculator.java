@@ -282,7 +282,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
                 
                 a = Double.parseDouble(jTextField1.getText()); // Store the first number
                 operator = "+"; // Store the operator
-                equation.append(jTextField1.getText()).append(" + "); // For the Jlabel
+                equation.append(jTextField1.getText()).append(" + ");
                 jLabel1.setText(equation.toString());  // For the Jlabel
                 jTextField1.setText(""); // Clear the text field for the next input
            
@@ -346,7 +346,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
                      if (a > 0) 
                     {
                         result = Math.log10(a); // Use base 10 logarithm
-                        result = Math.round(result); // Round to the nearest whole number
+                       // result = Math.round(result); // Round to the nearest whole number
                        // System.out.println("Computed log(a): " + result); // Debugging info
                     } else {
                         jTextField1.setText("Error: Invalid Input for Log");
