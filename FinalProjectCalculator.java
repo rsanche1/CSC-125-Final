@@ -96,7 +96,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             {
                 jTextField1.setText(jTextField1.getText() + "7");
                
-                jLabel1.setText(equation.toString());
+                jLabel1.setText(equation.toString()); // For the Jlabel
             }
         });
         
@@ -107,7 +107,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             {
                 jTextField1.setText(jTextField1.getText() + "4");
                 
-                jLabel1.setText(equation.toString());
+                jLabel1.setText(equation.toString()); // For the Jlabel
                 
             }
         });
@@ -121,7 +121,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent ae)
             {
                 jTextField1.setText(jTextField1.getText() + "1");
-                jLabel1.setText(equation.toString());
+                jLabel1.setText(equation.toString()); // For the Jlabel
 
             }
         });
@@ -166,7 +166,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent ae)
             {
                 jTextField1.setText(jTextField1.getText() + "8");
-                jLabel1.setText(equation.toString());
+                jLabel1.setText(equation.toString()); // For the Jlabel
 
             }
         });
@@ -179,7 +179,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
              {
                 jButton8ActionPerformed(evt);
                 jTextField1.setText(jTextField1.getText() + "5");
-                jLabel1.setText(equation.toString());
+                jLabel1.setText(equation.toString()); // For the Jlabel
             }
         });
 
@@ -188,7 +188,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent ae)
             {
                 jTextField1.setText(jTextField1.getText() + "9");
-                jLabel1.setText(equation.toString());
+                jLabel1.setText(equation.toString()); // For the Jlabel
 
             }
         });
@@ -200,7 +200,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
              {
                 jButton10ActionPerformed(evt);
                jTextField1.setText(jTextField1.getText() + "6");
-               jLabel1.setText(equation.toString());
+               jLabel1.setText(equation.toString()); // For the Jlabel
             }
         });
 
@@ -210,7 +210,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent ae)
             {
                 jTextField1.setText(jTextField1.getText() + "2");
-                jLabel1.setText(equation.toString());
+                jLabel1.setText(equation.toString()); // For the Jlabel
        
             }
         });
@@ -222,7 +222,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             {
                
                 jTextField1.setText(jTextField1.getText() + "3");
-                jLabel1.setText(equation.toString());
+                jLabel1.setText(equation.toString()); // For the Jlabel
 
             }
         });
@@ -233,7 +233,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             {
                
                 jTextField1.setText(jTextField1.getText() + "0");
-                jLabel1.setText(equation.toString());
+                jLabel1.setText(equation.toString()); // For the Jlabel
 
             }
         });
@@ -282,8 +282,8 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
                 
                 a = Double.parseDouble(jTextField1.getText()); // Store the first number
                 operator = "+"; // Store the operator
-                equation.append(jTextField1.getText()).append(" + ");
-                jLabel1.setText(equation.toString()); 
+                equation.append(jTextField1.getText()).append(" + "); // For the Jlabel
+                jLabel1.setText(equation.toString());  // For the Jlabel
                 jTextField1.setText(""); // Clear the text field for the next input
            
             }
