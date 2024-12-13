@@ -19,6 +19,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
     private double b = 0; // To store the second number
     private String operator = ""; // To store the operator
     private boolean isNewInput = true; // shows if the input is a new number
+    private StringBuilder equation = new StringBuilder(); // For the jlabel
     
    
     
@@ -63,23 +64,25 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
        
-
+        // Type the number first, then press the sqrt button. 
         sqrtButton.setText("√");
         sqrtButton.addActionListener(new java.awt.event.ActionListener() 
         {
             public void actionPerformed(java.awt.event.ActionEvent evt) 
             {
                 jButton1ActionPerformed(evt);
-                if (isNewInput) {
+                if (isNewInput) 
+                {
                     try {
                         // Get the number from the text field and parse it to double
                         a = Double.parseDouble(jTextField1.getText());
                         operator = "sqrt"; // Set the operator for square root
                         jTextField1.setText(""); // Clear the text field for the next input
-                        isNewInput = false; // Indicate we're no longer entering a new input
-                    } catch (NumberFormatException e) {
-                        // Handle invalid number input
-                        jTextField1.setText("Error");
+                        isNewInput = false; // no longer entering a new input
+                    } catch (NumberFormatException e) 
+                    {
+                        // Handles invalid number input
+                        jTextField1.setText("Error, invalid input");
                     }
                 }
 
@@ -87,11 +90,13 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
         });
 
         sevenButton.setText("7");
-        sevenButton.addActionListener(new ActionListener() {
+        sevenButton.addActionListener(new ActionListener() 
+        {
             public void actionPerformed(ActionEvent ae)
             {
                 jTextField1.setText(jTextField1.getText() + "7");
-
+               
+                jLabel1.setText(equation.toString());
             }
         });
         
@@ -101,11 +106,13 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent ae)
             {
                 jTextField1.setText(jTextField1.getText() + "4");
-
+                
+                jLabel1.setText(equation.toString());
+                
             }
         });
         
-        
+            
        
 
         oneButton.setText("1");
@@ -114,6 +121,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent ae)
             {
                 jTextField1.setText(jTextField1.getText() + "1");
+                jLabel1.setText(equation.toString());
 
             }
         });
@@ -129,7 +137,8 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
 
              }
         });
-
+         
+        //Type the number first, then press the log button. 
         logButton.setText("log");
         logButton.addActionListener(new java.awt.event.ActionListener() 
         {
@@ -143,8 +152,9 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
                     operator = "log"; 
                     //System.out.println("Log at  a = " + a); // Debugging info
                     jTextField1.setText(""); // Clear text field for clarity
-                } catch (NumberFormatException e) {
-                    jTextField1.setText("Error: Invalid Input"); // Handle invalid input gracefully
+                } catch (NumberFormatException e) 
+                {
+                    jTextField1.setText("Error: Invalid Input"); // Handles invalid input gracefully
                 }
                 
             }
@@ -156,16 +166,20 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent ae)
             {
                 jTextField1.setText(jTextField1.getText() + "8");
+                jLabel1.setText(equation.toString());
 
             }
         });
         
 
         fiveButton.setText("5");
-        fiveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        fiveButton.addActionListener(new java.awt.event.ActionListener() 
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+             {
                 jButton8ActionPerformed(evt);
                 jTextField1.setText(jTextField1.getText() + "5");
+                jLabel1.setText(equation.toString());
             }
         });
 
@@ -174,6 +188,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent ae)
             {
                 jTextField1.setText(jTextField1.getText() + "9");
+                jLabel1.setText(equation.toString());
 
             }
         });
@@ -185,6 +200,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
              {
                 jButton10ActionPerformed(evt);
                jTextField1.setText(jTextField1.getText() + "6");
+               jLabel1.setText(equation.toString());
             }
         });
 
@@ -194,6 +210,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent ae)
             {
                 jTextField1.setText(jTextField1.getText() + "2");
+                jLabel1.setText(equation.toString());
        
             }
         });
@@ -203,7 +220,9 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
         {
             public void actionPerformed(ActionEvent ae)
             {
+               
                 jTextField1.setText(jTextField1.getText() + "3");
+                jLabel1.setText(equation.toString());
 
             }
         });
@@ -212,7 +231,9 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
         zeroButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae)
             {
+               
                 jTextField1.setText(jTextField1.getText() + "0");
+                jLabel1.setText(equation.toString());
 
             }
         });
@@ -224,6 +245,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             {   
                   a = Double.parseDouble(jTextField1.getText()); // Store the first number
                    operator = "/"; // Store the operator
+                  
                   jTextField1.setText(""); // Clear the text field for the next input
             }
         });
@@ -234,6 +256,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             { 
                 a = Double.parseDouble(jTextField1.getText()); // Store the first number
                 operator = "*"; // Set the operator
+                
                  jTextField1.setText(""); // Clear the text field for the second number
              }
             
@@ -246,6 +269,7 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
             {
                 a = Double.parseDouble(jTextField1.getText()); // Store the first number
                 operator = "-"; // Store the operator
+               
                 jTextField1.setText(""); // Clear the text field for the next input
             }
         });
@@ -258,8 +282,10 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
                 
                 a = Double.parseDouble(jTextField1.getText()); // Store the first number
                 operator = "+"; // Store the operator
+                equation.append(jTextField1.getText()).append(" + ");
+                jLabel1.setText(equation.toString()); 
                 jTextField1.setText(""); // Clear the text field for the next input
-
+           
             }
         });
 
@@ -276,14 +302,16 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
 
             }
         });
-
+       
+         // We added the Operation methods here.
         equalButton.setText("=");
         equalButton.addActionListener(new ActionListener() 
         {
             public void actionPerformed(ActionEvent ae)
             {
                 double result = 0;
-                switch (operator) {
+                switch (operator) 
+                {
                     case "+":
                         b = Double.parseDouble(jTextField1.getText());
                         result = Operations.add(a, b);
@@ -298,9 +326,11 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
                         break;
                     case "/":
                         b = Double.parseDouble(jTextField1.getText());
-                        if (b != 0) {
+                        if (b != 0) 
+                        {
                             result = Operations.divide(a, b);
-                        } else {
+                        } else
+                         {
                             jTextField1.setText("Error: Division by Zero");
                             return;
                         }
@@ -313,8 +343,9 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
                         result = Operations.squareRoot(a); // Perform square root on `a`
                         break;
                     case "log":
-                    if (a > 0) {
-                        result = Math.log10(a); // Use base-10 logarithm
+                     if (a > 0) 
+                    {
+                        result = Math.log10(a); // Use base 10 logarithm
                         result = Math.round(result); // Round to the nearest whole number
                        // System.out.println("Computed log(a): " + result); // Debugging info
                     } else {
@@ -328,6 +359,9 @@ public class FinalProjectCalculatorTester extends javax.swing.JFrame {
                 }
         
                 jTextField1.setText(String.valueOf(result)); // Display the result
+                equation.setLength(0); 
+                equation.append(result); // Start new equation with the result
+                jLabel1.setText(equation.toString());
                 operator = ""; // Reset the operator
                 
             
